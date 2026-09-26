@@ -1,15 +1,99 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
+<script setup>
+// No reactivity needed here yet — this is static content.
+</script>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<template>
+  <main>
+    <div class="about-page-container">
+      <section class="about-section">
+        <h1>About Me</h1>
+        <p>
+          Hi, I'm Karah! I am currently a student at a coding academy, taking a bold leap to turn a
+          lifelong interest into a career. Before diving into technology, I worked as a teacher's
+          assistant. While I originally planned to pursue a career in education, my natural
+          curiosity eventually led me back to my old love for technology.
+        </p>
+        <p>
+          My journey into web development truly began because I am the type of person who looks at a
+          website and dares to ask,
+          <em><b>"But how does that work?"</b></em>
+          That drive to understand the inner workings of software brought me to my current studies,
+          where I am mastering the core building blocks of the web.
+        </p>
+        <p>
+          Looking beyond this portfolio project, my ultimate goal is to keep expanding my knowledge
+          of the tech ecosystem and evolve into a professional, full-stack developer. I love solving
+          puzzles, building clean layouts, and turning complex logic into accessible digital
+          experiences.
+        </p>
+      </section>
+      <div class="hero-image">
+        <img src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg" alt="Profile picture of Karah" />
+      </div>
+    </div>
+
+    <section class="hobbies-section">
+      <h3>My Hobbies &amp; Interests</h3>
+      <ul>
+        <li>Improving my coding skills &amp; problem solving</li>
+        <li>Reading about various technologies and trends</li>
+        <li>Playing video games and drawing.</li>
+        <li>
+          Watching shows about mechs and futuristic concepts (like Transformers and Psycho-Pass) and
+          learning about the design processes behind their creation.
+        </li>
+      </ul>
+      <br />
+
+      <h3>My Learning Goals</h3>
+      <ol>
+        <li>
+          Master JavaScript and C++ (I really want to explore game development at some point!)
+        </li>
+        <li>Build beautiful layouts using CSS and HTML</li>
+        <li>
+          Launch this portfolio live on the web and maintain it as I continue to improve my skills
+          along my coding journey.
+        </li>
+      </ol>
+    </section>
+
+    <section class="skills-section">
+      <h3>My Current Skills</h3>
+      <p>Here are some of the technologies and skills I am currently learning and working with:</p>
+      <br />
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript (ES6+)</li>
+        <li>Git &amp; GitHub</li>
+        <li>Responsive Web Design</li>
+        <li>Basic Command Line Usage</li>
+        <li>Bootstrap</li>
+        <li>Python</li>
+      </ul>
+    </section>
+
+    <section class="experience-section">
+      <h3>My Experience</h3>
+      <p>Here is a brief overview of my experience as an aspiring full-stack developer:</p>
+      <br />
+      <h4 class="h4">Game code modder — [Childhood]</h4>
+      <h5>Home</h5>
+      <p>
+        As a child, I loved playing video games and often found myself curious about how they
+        worked. I started experimenting with game code mods, which allowed me to customize and
+        enhance my gaming experience. This early exposure to coding sparked my interest in
+        technology and laid the foundation for my future studies in web development.
+      </p>
+      <br />
+      <h4 class="h4">Coding student — [April 2026 - Present]</h4>
+      <h5>Life Choices Academy</h5>
+      <p>
+        Currently enrolled in a comprehensive coding bootcamp, where I am learning the fundamentals
+        of web development, including HTML, CSS, JavaScript, and version control with Git. I am
+        actively building projects to apply my skills and gain practical experience.
+      </p>
+    </section>
+  </main>
+</template>
