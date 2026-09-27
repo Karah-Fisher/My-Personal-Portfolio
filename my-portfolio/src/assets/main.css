@@ -30,6 +30,43 @@ footer,
 }
 
 /*============================================================================================*/
+/* Navigation Layout using Flexbox */
+/*============================================================================================*/
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  padding: 1rem;
+}
+
+nav .nav-brand {
+  color: rgb(205, 34, 63); /* Accent color for the brand name */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: rgb(221, 227, 239); /* Light text color for contrast against the dark background */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: rgb(205, 34, 63); /* For an accent color when hovering on the nav bar */
+}
+
+/*============================================================================================*/
 /* About Page */
 /*============================================================================================*/
 
