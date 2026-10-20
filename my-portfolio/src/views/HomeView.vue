@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { projects } from '@/data/projects'
 </script>
 
 <template>
@@ -56,6 +56,75 @@ import { RouterLink } from 'vue-router'
           <li>🤝 Team Player</li>
           <li>🔍 Curious Mind</li>
         </ul>
+      </div>
+    </section>
+
+        <!-- ===================== SKILLS ===================== -->
+    <section id="skills" class="skills-preview">
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <ul class="skills-tiles">
+        <li>
+          <span class="skill-icon">&lt;/&gt;</span>
+          <span class="skill-name">HTML5</span>
+        </li>
+        <li>
+          <span class="skill-icon">#</span>
+          <span class="skill-name">CSS3</span>
+        </li>
+        <li>
+          <span class="skill-icon">JS</span>
+          <span class="skill-name">JavaScript</span>
+        </li>
+        <li>
+          <span class="skill-icon">▲</span>
+          <span class="skill-name">Bootstrap</span>
+        </li>
+        <li>
+          <span class="skill-icon">🐍</span>
+          <span class="skill-name">Python</span>
+        </li>
+        <li>
+          <span class="skill-icon">⎇</span>
+          <span class="skill-name">Git &amp; GitHub</span>
+        </li>
+        <li>
+          <span class="skill-icon">◐</span>
+          <span class="skill-name">Responsive Design</span>
+        </li>
+        <li>
+          <span class="skill-icon">»_</span>
+          <span class="skill-name">Command Line</span>
+        </li>
+      </ul>
+    </section>
+    
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="projects-section">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="section-title">My Projects</h2>
+        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto;">
+          Here are some of the projects I've built while learning full-stack development.
+        </p>
+      </div>
+
+      <div class="projects-container">
+        <div v-for="project in projects" :key="project.id" class="project-card">
+          <div class="card-image" :class="project.imageClass">
+            <img :src="project.image" :alt="project.alt" />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-description">{{ project.description }}</p>
+            <div class="card-tags">
+              <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+            </div>
+            <div class="card-footer">
+              <a :href="project.link" target="_blank" rel="noopener" class="btn-primary">
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>

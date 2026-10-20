@@ -1,25 +1,45 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+
+const menuOpen = ref(false)
+
+const closeMenu = () => {
+  menuOpen.value = false
+}
 </script>
 
 <template>
-  <div class="app-shell">
-    <header>
+  <div>
+    <!-- Sticky Navigation -->
+    <header class="site-header">
       <nav>
-        <RouterLink to="/" class="nav-brand">K</RouterLink>
-        <ul>
-          <li><RouterLink to="/">Home</RouterLink></li>
-          <li><RouterLink to="/about">About Me</RouterLink></li>
-          <li><RouterLink to="/projects">Projects</RouterLink></li>
-          <li><RouterLink to="/contact">Contact</RouterLink></li>
+        <a href="#top" class="nav-brand" @click="closeMenu">K</a>
+
+        <button
+          class="nav-toggle"
+          @click="menuOpen = !menuOpen"
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+
+        <ul :class="{ open: menuOpen }">
+          <li><a href="#about" @click="closeMenu">About Me</a></li>
+          <li><a href="#projects" @click="closeMenu">Projects</a></li>
+          <li><a href="#skills" @click="closeMenu">Skills</a></li>
+          <li><a href="#contact" @click="closeMenu">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <RouterView />
+    <!-- Main Content Area -->
+    <main id="top">
+      <RouterView />
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
-      <p>© 2026 Karah. Built with Vue.</p>
+      <p>© 2026 Karah Fisher. Built with Vue.</p>
     </footer>
   </div>
 </template>
