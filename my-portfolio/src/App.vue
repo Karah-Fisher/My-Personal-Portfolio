@@ -24,9 +24,10 @@ const closeMenu = () => {
         </button>
 
         <ul :class="{ open: menuOpen }">
+          <li><a href="#home" @click="closeMenu">Home</a></li>
           <li><a href="#about" @click="closeMenu">About Me</a></li>
-          <li><a href="#projects" @click="closeMenu">Projects</a></li>
           <li><a href="#skills" @click="closeMenu">Skills</a></li>
+          <li><a href="#projects" @click="closeMenu">Projects</a></li>
           <li><a href="#contact" @click="closeMenu">Contact</a></li>
         </ul>
       </nav>
