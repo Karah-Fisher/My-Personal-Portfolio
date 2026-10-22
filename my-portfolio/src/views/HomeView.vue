@@ -1,5 +1,6 @@
 <script setup>
 import { projects } from '@/data/projects'
+import { certificates } from '@/data/certificates'
 </script>
 
 <template>
@@ -58,38 +59,8 @@ import { projects } from '@/data/projects'
         </ul>
       </div>
     </section>
-
-    <!-- ===================== PROJECTS ===================== -->
-    <section id="projects" class="projects-section">
-      <div style="text-align: center; margin-bottom: 40px;">
-        <h2 class="section-title">My Projects</h2>
-        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto;">
-          Here are some of the projects I've built while learning full-stack development.
-        </p>
-      </div>
-
-      <div class="projects-container">
-        <div v-for="project in projects" :key="project.id" class="project-card">
-          <div class="card-image" :class="project.imageClass">
-            <img :src="project.image" :alt="project.alt" />
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">{{ project.title }}</h3>
-            <p class="card-description">{{ project.description }}</p>
-            <div class="card-tags">
-              <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
-            </div>
-            <div class="card-footer">
-              <a :href="project.link" target="_blank" rel="noopener" class="btn-primary">
-                View Project
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-            <!-- ===================== SKILLS & TECHNOLOGIES ===================== -->
+    
+    <!-- ===================== SKILLS & TECHNOLOGIES ===================== -->
     <section id="skills" class="skills-preview">
       <h2 class="section-title">Skills &amp; Technologies</h2>
       <ul class="skills-tiles">
@@ -128,7 +99,53 @@ import { projects } from '@/data/projects'
       </ul>
     </section>
 
-        <!-- ===================== CONTACT ===================== -->
+     <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="projects-section">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 class="section-title">My Projects</h2>
+        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto;">
+          Here are some of the projects I've built while learning full-stack development.
+        </p>
+      </div>
+
+      <div class="projects-container">
+        <div v-for="project in projects" :key="project.id" class="project-card">
+          <div class="card-image" :class="project.imageClass">
+            <img :src="project.image" :alt="project.alt" />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-description">{{ project.description }}</p>
+            <div class="card-tags">
+              <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+            </div>
+            <div class="card-footer">
+              <a :href="project.link" target="_blank" rel="noopener" class="btn-primary">
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CERTIFICATES ===================== -->
+    <section id="certificates" class="certificates-section">
+      <div class="section-header">
+        <p class="eyebrow">Skills Validation</p>
+        <h2 class="section-title">Certificates</h2>
+      </div>
+      
+      <div class="certificates-grid">
+        <div v-for="cert in certificates" :key="cert.id" class="cert-card">
+          <div class="cert-icon">{{ cert.icon }}</div>
+          <h3 class="cert-title">{{ cert.title }}</h3>
+          <p class="cert-issuer">{{ cert.issuer }}</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="contact-section">
       <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Contact Me</h2>
       <p style="text-align: center; color: rgb(221, 227, 239);">Feel free to reach out by filling out the form below.</p>
