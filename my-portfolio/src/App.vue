@@ -1,11 +1,30 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const menuOpen = ref(false)
+const activeSection = ref('home') 
 
 const closeMenu = () => {
   menuOpen.value = false
 }
+
+onMounted(() => {
+  // Find all the sections with an ID
+  const sections = document.querySelectorAll('section[id]')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activeSection.value = entry.target.id
+        }
+      })
+    },
+    { rootMargin: '-20% 0px -60% 0px' } // Triggers when section is in the middle of the screen
+  )
+
+  sections.forEach((section) => observer.observe(section))
+})
 </script>
 
 <template>

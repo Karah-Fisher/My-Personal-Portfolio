@@ -6,7 +6,7 @@ import { certificates } from '@/data/certificates'
 <template>
   <main>
     <!-- ===================== HERO ===================== -->
-    <section class="hero-container">
+    <section id="top" class="hero-container">
       <div class="hero-content">
         <p class="hero-eyebrow">Hi, I'm</p>
         <h1>Karah <span class="highlight">Fisher</span></h1>
@@ -34,7 +34,7 @@ import { certificates } from '@/data/certificates'
     </section>
 
     <!-- ===================== ABOUT PREVIEW ===================== -->
-    <section class="about-preview">
+    <section id="about" class="about-preview">
       <div class="about-preview-image">
         <img
           src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg"
@@ -50,12 +50,12 @@ import { certificates } from '@/data/certificates'
         </p>
 
         <ul class="trait-grid">
-          <li>🧩 Problem Solver</li>
-          <li>🎯 Detail Oriented</li>
-          <li>💻 Clean Code Advocate</li>
-          <li>📚 Always Learning</li>
-          <li>🤝 Team Player</li>
-          <li>🔍 Curious Mind</li>
+          <li>Problem Solver</li>
+          <li>Detail Oriented</li>
+          <li>Clean Code Advocate</li>
+          <li>Always Learning</li>
+          <li>Team Player</li>
+          <li>Curious Mind</li>
         </ul>
       </div>
     </section>
@@ -63,6 +63,7 @@ import { certificates } from '@/data/certificates'
     <!-- ===================== SKILLS & TECHNOLOGIES ===================== -->
     <section id="skills" class="skills-preview">
       <h2 class="section-title">Skills &amp; Technologies</h2>
+      
       <ul class="skills-tiles">
         <li>
           <span class="skill-icon">&lt;/&gt;</span>
@@ -145,47 +146,43 @@ import { certificates } from '@/data/certificates'
       </div>
     </section>
     
-    <!-- ===================== CONTACT ===================== -->
+       <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="contact-section">
-      <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Contact Me</h2>
-      <p style="text-align: center; color: rgb(221, 227, 239);">Feel free to reach out by filling out the form below.</p>
       
-      <!-- MY FORMSPREE LINK -->
-      <form action="https://formspree.io/f/mpqnvozl" method="POST">
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required placeholder="Your Name" />
+      <!-- Left Side: Text & Socials -->
+      <div class="contact-info">
+        <h2 class="section-title">Let's build<br/>together</h2>
+        <p>Open to freelance opportunities, consulting, and full-time roles.</p>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/karah-fisher/" target="_blank" class="social-btn">
+            💼 linkedin.com/in/karah-fisher
+          </a>
+          <a href="https://github.com/Karah-Fisher" target="_blank" class="social-btn">
+            💻 github.com/Karah-Fisher
+          </a>
         </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
-        </div>
-        <div>
-          <label for="subject">Subject:</label>
-          <input type="text" id="subject" name="subject" required placeholder="Project inquiry" />
-        </div>
-        <div>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="social-media-section">
-        <h3>Connect with Me</h3>
-        <ul class="social-media-list">
-          <li>
-            <a class="social-btn" href="https://www.linkedin.com/in/karah-fisher/" target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a class="social-btn" href="https://github.com/Karah-Fisher" target="_blank" rel="noopener">
-              GitHub
-            </a>
-          </li>
-        </ul>
       </div>
+
+      <!-- Right Side: Form -->
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mpqnvozl" method="POST">
+          <div>
+            <label for="name">YOUR NAME</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" />
+          </div>
+          <div>
+            <label for="email">EMAIL ADDRESS</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" />
+          </div>
+          <div>
+            <label for="message">MESSAGE</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit">SEND MESSAGE</button>
+        </form>
+      </div>
+
     </section>
 
   </main>
