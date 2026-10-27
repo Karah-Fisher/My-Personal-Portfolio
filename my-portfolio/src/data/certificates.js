@@ -4,6 +4,7 @@ export const certificates = [
     title: 'Introduction to Cybersecurity',
     issuer: 'Cisco',
     icon: '🛡️' 
+    
   },
   {
     id: 2,

@@ -1,6 +1,7 @@
 <script setup>
 import { projects } from '@/data/projects'
 import { certificates } from '@/data/certificates'
+import { skillGroups } from '@/data/skills'
 </script>
 
 <template>
@@ -10,43 +11,40 @@ import { certificates } from '@/data/certificates'
       <div class="hero-content">
         <p class="hero-eyebrow">Hi, I'm</p>
         <h1>Karah <span class="highlight">Fisher</span></h1>
-        <h2>Aspiring Full-Stack Developer</h2>
+        <h2>Junior Full-Stack Web Developer</h2>
         <p>
-          I build clean, thoughtful web experiences while studying at Life Choices
-          Academy. From idea to deployment, I turn curiosity into working code — one
-          project at a time.
+          I build clean, thoughtful web experiences that are user-focused and have practical
+          functionality. From idea to deployment, I turn curiosity into working code — one project
+          at a time.
         </p>
 
         <div class="cta-buttons">
-          <RouterLink to="/projects" class="cta-button">View My Work →</RouterLink>
-          <RouterLink to="/contact" class="cta-button cta-button--ghost">
-            Get in Touch
-          </RouterLink>
+          <a href="#projects" class="cta-button">View My Work →</a>
+          <a href="#contact" class="cta-button cta-button--ghost"> Get in Touch </a>
         </div>
       </div>
 
       <div class="hero-image">
-        <img
-          src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg"
-          alt="Karah Fisher"
-        />
+        <img src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg" alt="Karah Fisher" />
       </div>
     </section>
 
     <!-- ===================== ABOUT PREVIEW ===================== -->
     <section id="about" class="about-preview">
       <div class="about-preview-image">
-        <img
-          src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg"
-          alt="Karah at work"
-        />
+        <img src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg" alt="Karah at work" />
       </div>
       <div class="about-preview-content">
-        <h2 class="section-title">About Me</h2>
+        <div class="section-header">
+          <p class="eyebrow">Discovery</p>
+          <h2 class="section-title">About Me</h2>
+        </div>
         <p>
-          Passionate about creating clean, efficient, and scalable solutions with
-          great user experiences. I love working with technologies that push the web
-          forward — and I'm always learning something new.
+          I am passionate about creating clean, efficient, and scalable solutions with great user
+          experiences. I recently graduated from an intensive, 6 month full-stack web development
+          course, and I'm ready to bring my skills to a team that values collaboration, creativity,
+          and continuous learning. I love working with technologies that push the web forward — and
+          I'm always learning something new.
         </p>
 
         <ul class="trait-grid">
@@ -59,52 +57,40 @@ import { certificates } from '@/data/certificates'
         </ul>
       </div>
     </section>
-    
+
     <!-- ===================== SKILLS & TECHNOLOGIES ===================== -->
     <section id="skills" class="skills-preview">
-      <h2 class="section-title">Skills &amp; Technologies</h2>
-      
-      <ul class="skills-tiles">
-        <li>
-          <span class="skill-icon">&lt;/&gt;</span>
-          <span class="skill-name">HTML5</span>
-        </li>
-        <li>
-          <span class="skill-icon">#</span>
-          <span class="skill-name">CSS3</span>
-        </li>
-        <li>
-          <span class="skill-icon">JS</span>
-          <span class="skill-name">JavaScript</span>
-        </li>
-        <li>
-          <span class="skill-icon">▲</span>
-          <span class="skill-name">Bootstrap</span>
-        </li>
-        <li>
-          <span class="skill-icon">🐍</span>
-          <span class="skill-name">Python</span>
-        </li>
-        <li>
-          <span class="skill-icon">⎇</span>
-          <span class="skill-name">Git &amp; GitHub</span>
-        </li>
-        <li>
-          <span class="skill-icon">◐</span>
-          <span class="skill-name">Responsive Design</span>
-        </li>
-        <li>
-          <span class="skill-icon">»_</span>
-          <span class="skill-name">Command Line</span>
-        </li>
-      </ul>
+      <div class="section-header">
+        <p class="eyebrow">Tech Stack</p>
+        <h2 class="section-title">Specialized Skillset</h2>
+      </div>
+
+      <div class="skills-grid-layout">
+        <!-- Loop through each category -->
+        <div v-for="group in skillGroups" :key="group.category" class="skill-group-card">
+          <!-- Category Header -->
+          <div class="skill-group-header">
+            <span class="group-icon" v-html="group.icon"></span>
+            <h3>{{ group.category }}</h3>
+          </div>
+
+          <!-- Category Grid of Skills -->
+          <div class="skill-items-grid">
+            <div v-for="skill in group.skills" :key="skill.name" class="skill-item">
+              <i :class="skill.icon" class="skill-icon"></i>
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-     <!-- ===================== PROJECTS ===================== -->
+    <!-- ===================== PROJECTS ===================== -->
     <section id="projects" class="projects-section">
-      <div style="text-align: center; margin-bottom: 40px;">
+      <div style="text-align: center; margin-bottom: 40px">
+        <p class="eyebrow">Portfolio</p>
         <h2 class="section-title">My Projects</h2>
-        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto;">
+        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto">
           Here are some of the projects I've built while learning full-stack development.
         </p>
       </div>
@@ -136,7 +122,7 @@ import { certificates } from '@/data/certificates'
         <p class="eyebrow">Skills Validation</p>
         <h2 class="section-title">Certificates</h2>
       </div>
-      
+
       <div class="certificates-grid">
         <div v-for="cert in certificates" :key="cert.id" class="cert-card">
           <div class="cert-icon">{{ cert.icon }}</div>
@@ -145,45 +131,102 @@ import { certificates } from '@/data/certificates'
         </div>
       </div>
     </section>
-    
-       <!-- ===================== CONTACT ===================== -->
+
+    <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="contact-section">
-      
-      <!-- Left Side: Text & Socials -->
-      <div class="contact-info">
-        <h2 class="section-title">Let's build<br/>together</h2>
-        <p>Open to freelance opportunities, consulting, and full-time roles.</p>
-        
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/karah-fisher/" target="_blank" class="social-btn">
-            💼 linkedin.com/in/karah-fisher
-          </a>
-          <a href="https://github.com/Karah-Fisher" target="_blank" class="social-btn">
-            💻 github.com/Karah-Fisher
-          </a>
+      <div class="contact-container">
+        <!-- Left Side: Text & Contact Details -->
+        <div class="contact-info">
+          <p class="eyebrow">Connect</p>
+          <h2 class="contact-title">Let's build<br />together</h2>
+          <p class="contact-desc">
+            Open to freelance opportunities, consulting, and full-time collaborative projects. Drop
+            me a line and let's start a conversation.
+          </p>
+          
+          <!-- Contact Links (We're going to use SVG icons to better match the red theme!)-->
+          <div class="contact-links">
+            <!-- Email -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <p class="contact-label">EMAIL ME</p>
+                <a href="mailto:hello@karahfisher.dev" class="contact-value">hello@karahfisher.dev</a>
+              </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">LINKEDIN</p>
+                <a href="https://www.linkedin.com/in/karah-fisher/" target="_blank" class="contact-value">linkedin.com/in/karah-fisher</a>
+              </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">GITHUB</p>
+                <a href="https://github.com/Karah-Fisher" target="_blank" class="contact-value">github.com/Karah-Fisher</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: The Form -->
+        <div class="contact-form-wrapper">
+          <form action="https://formspree.io/f/mpqnvozl" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">FULL NAME</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe" />
+              </div>
+              <div class="form-group">
+                <label for="email">EMAIL ADDRESS</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">SUBJECT</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                placeholder="Project Inquiry"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">MESSAGE</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">SEND MESSAGE</button>
+          </form>
         </div>
       </div>
-
-      <!-- Right Side: Form -->
-      <div class="contact-form">
-        <form action="https://formspree.io/f/mpqnvozl" method="POST">
-          <div>
-            <label for="name">YOUR NAME</label>
-            <input type="text" id="name" name="name" required placeholder="John Doe" />
-          </div>
-          <div>
-            <label for="email">EMAIL ADDRESS</label>
-            <input type="email" id="email" name="email" required placeholder="john@example.com" />
-          </div>
-          <div>
-            <label for="message">MESSAGE</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button type="submit">SEND MESSAGE</button>
-        </form>
-      </div>
-
     </section>
-
   </main>
 </template>

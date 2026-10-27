@@ -4,14 +4,14 @@
 /* 1. GLOBAL RESET & VARIABLES */
 /*============================================================================================*/
 :root {
-  --bg-dark: #0A0A0C;
+  --bg-dark: #0a0a0c;
   --bg-card: #151518;
-  --bg-card-hover: #1A1A1E;
-  --text-main: #FFFFFF;
-  --text-muted: #A1A1AA;
-  --accent: #FF1A1A;
-  --accent-gradient: linear-gradient(135deg, #FF1A1A, #FF4D4D);
-  --border: #2A2A30;
+  --bg-card-hover: #1a1a1e;
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --accent: #ff1a1a;
+  --accent-gradient: linear-gradient(135deg, #ff1a1a, #ff4d4d);
+  --border: #2a2a30;
 }
 
 * {
@@ -87,11 +87,36 @@ nav ul li a {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
+
+  /* New code for the red line I want */
+  position: relative;
+  padding-bottom: 4px;
 }
 
-nav ul li a:hover {
+/* The red line (hidden by default) */
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0); /* Squished to 0 width */
+  transform-origin: bottom left;
+  transition: transform 0.3s ease;
+}
+
+/* Show the line on hover OR when the link is active */
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--text-main);
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  transform: scaleX(1); /* Expands to 100% width */
 }
 
 .nav-toggle {
@@ -106,6 +131,7 @@ nav ul li a:hover {
 /*============================================================================================*/
 /* 3. REUSABLE COMPONENTS */
 /*============================================================================================*/
+.hero-eyebrow,
 .eyebrow {
   font-family: 'Fira Code', monospace;
   font-size: 0.75rem;
@@ -248,7 +274,7 @@ nav ul li a:hover {
   flex: 1.2;
 }
 
-.about-preview-content p {
+.about-preview-content p:not(.eyebrow) {
   color: var(--text-muted);
   margin-bottom: 30px;
   font-size: 1.05rem;
@@ -284,42 +310,75 @@ nav ul li a:hover {
   max-width: 1200px;
   margin: 100px auto;
   padding: 20px;
-  text-align: center;
 }
 
-.skills-tiles {
-  list-style: none;
-  padding: 0;
+.skills-grid-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
   margin-top: 40px;
 }
 
-.skills-tiles li {
+.skill-group-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.skill-group-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.group-icon {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.skill-items-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns inside the card */
+  gap: 12px;
+}
+
+.skill-item {
+  background-color: var(--bg-dark); /* Darker inner square */
+  border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 30px 20px;
+  padding: 16px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  transition: border-color 0.3s ease;
+  justify-content: center;
+  gap: 8px;
+  transition: border-color 0.2s;
 }
 
-.skills-tiles li:hover {
+.skill-item:hover {
   border-color: var(--accent);
 }
 
-.skill-icon {
-  font-family: 'Fira Code', monospace;
-  font-size: 1.5rem;
+.skill-icon-small {
+  font-size: 2rem; /* Made it bigger since it's a logo now */
   color: var(--text-main);
+  height: 32px; /* Keeps them all aligned */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill-name {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -469,53 +528,97 @@ nav ul li a:hover {
   max-width: 1200px;
   margin: 100px auto;
   padding: 20px;
+}
+
+.contact-container {
   display: flex;
   gap: 60px;
+  align-items: flex-start;
 }
 
+/* Left Side */
 .contact-info {
   flex: 1;
+  padding-top: 20px;
 }
 
-.contact-info h2 {
-  font-size: 2.5rem;
+.contact-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--text-main);
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
-.contact-info p {
+.contact-desc {
   color: var(--text-muted);
-  margin-bottom: 40px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  max-width: 400px;
 }
 
-.social-links {
+.contact-links {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 24px;
 }
 
-.social-btn {
+.contact-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.9rem;
+  gap: 16px;
 }
 
-.social-btn:hover {
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.contact-form {
+.contact-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.contact-value {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.contact-value:hover {
+  color: var(--text-muted);
+}
+
+/* Right Side (Form) */
+.contact-form-wrapper {
   flex: 1.2;
   background-color: var(--bg-card);
-  padding: 30px;
-  border-radius: 8px;
   border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
 }
 
-form div {
-  margin-bottom: 20px;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 24px;
 }
 
 label {
@@ -524,42 +627,74 @@ label {
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
 
-input[type="text"],
-input[type="email"],
+input[type='text'],
+input[type='email'],
 textarea {
   width: 100%;
-  padding: 12px;
-  background-color: var(--bg-dark);
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
 }
 
-input:focus,
+input[type='text']:focus,
+input[type='email']:focus,
 textarea:focus {
   outline: none;
   border-color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-button[type="submit"] {
+input::placeholder,
+textarea::placeholder {
+  color: #555;
+}
+
+.submit-btn {
   width: 100%;
-  background: var(--accent-gradient);
+  background-color: var(--accent);
   color: #fff;
-  padding: 14px;
+  padding: 18px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: background-color 0.2s;
+  letter-spacing: 1px;
 }
 
-button[type="submit"]:hover {
-  opacity: 0.9;
+.submit-btn:hover {
+  background-color: #d91414;
 }
 
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .contact-form-wrapper {
+    padding: 24px;
+  }
+}
 /*============================================================================================*/
 /* 10. FOOTER */
 /*============================================================================================*/
@@ -573,6 +708,21 @@ button[type="submit"]:hover {
   font-size: 0.8rem;
 }
 
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  background-color: rgba(255, 26, 26, 0.1);
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 26, 26, 0.2);
+}
 /*============================================================================================*/
 /* 11. RESPONSIVE DESIGN */
 /*============================================================================================*/
@@ -589,7 +739,8 @@ button[type="submit"]:hover {
     font-size: 3rem;
   }
 
-  .hero-content p, .trait-grid {
+  .hero-content p,
+  .trait-grid {
     margin: 0 auto 30px auto;
   }
 
