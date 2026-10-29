@@ -1,7 +1,14 @@
 <script setup>
+import { ref} from 'vue'
 import { projects } from '@/data/projects'
 import { certificates } from '@/data/certificates'
 import { skillGroups } from '@/data/skills'
+
+
+// Certificate Modal State
+const selectedCert = ref(null)
+const openCertModal = (cert) => { selectedCert.value = cert }
+const closeCertModal = () => { selectedCert.value = null }
 </script>
 
 <template>
@@ -19,13 +26,9 @@ import { skillGroups } from '@/data/skills'
         </p>
 
         <div class="cta-buttons">
-          <a href="#projects" class="cta-button">View My Work →</a>
-          <a href="#contact" class="cta-button cta-button--ghost"> Get in Touch </a>
+          <a href="#projects" class="cta-button cta-button--ghost">View My Work →</a>
+          <a href="/Karah-Fisher-Resume.pdf" class="cta-button cta-button--ghost" download> Download CV ↓ </a>
         </div>
-      </div>
-
-      <div class="hero-image">
-        <img src="https://i.ibb.co/99ny3FSW/Profile-picture.jpg" alt="Karah Fisher" />
       </div>
     </section>
 
@@ -124,13 +127,35 @@ import { skillGroups } from '@/data/skills'
       </div>
 
       <div class="certificates-grid">
-        <div v-for="cert in certificates" :key="cert.id" class="cert-card">
+        <div v-for="cert in certificates" :key="cert.id" class="cert-card" @click="openCertModal(cert)">
           <div class="cert-icon">{{ cert.icon }}</div>
           <h3 class="cert-title">{{ cert.title }}</h3>
           <p class="cert-issuer">{{ cert.issuer }}</p>
+          <p class="cert-date">{{ cert.date }}</p>
+
+          <!-- To add a subtle hint that is clickable -->
+           <span class="cert-view-btn">View Certificate</span>
         </div>
       </div>
     </section>
+
+        <!-- ===================== CERTIFICATE MODAL ===================== -->
+    <div v-if="selectedCert" class="modal-overlay" @click.self="closeCertModal">
+      <div class="modal-content cert-modal-content">
+        <button class="modal-close" @click="closeCertModal">✕</button>
+        
+        <img :src="selectedCert.image" :alt="selectedCert.title" class="cert-modal-img" />
+        
+        <div class="cert-modal-body" style="padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <h2 style="color: var(--text-main); font-size: 1.5rem; margin: 0;">{{ selectedCert.title }}</h2>
+          <p style="color: var(--text-muted); margin: 0;">
+            Issued by <strong style="color: var(--accent);">{{ selectedCert.issuer }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
 
     <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="contact-section">

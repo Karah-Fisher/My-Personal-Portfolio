@@ -67,10 +67,10 @@ nav .nav-brand {
 }
 
 /* Small red square next to name */
-nav .nav-brand::before {
-  content: '■';
+nav .nav-brand::after {
+  content: '✦';
   color: var(--accent);
-  margin-right: 8px;
+  margin-right: 12px;
   font-size: 1rem;
 }
 
@@ -200,10 +200,17 @@ nav ul li a.active::after {
   gap: 60px;
   justify-content: space-between;
   align-items: center;
+  background-image: linear-gradient(rgba(10, 10, 12, 0.55), rgba(10, 10, 12, 0.75)),
+    url('/Hero%20background.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  border: 1px solid var(--border);
 }
 
 .hero-content {
   flex: 1;
+  text-align: center;
 }
 
 .hero-content h1 {
@@ -222,31 +229,20 @@ nav ul li a.active::after {
 
 .hero-content p {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--text-main);
   margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 500px;
 }
 
 .cta-buttons {
   display: flex;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
 
 /*============================================================================================*/
 /* 5. ABOUT SECTION */
@@ -393,8 +389,20 @@ nav ul li a.active::after {
 
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
+}
+
+@media (max-width: 1100px) {
+  .projects-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project-card {
@@ -521,6 +529,70 @@ nav ul li a.active::after {
   color: var(--text-muted);
 }
 
+.cert-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+}
+
+/*============================================================================================*/
+/* CERTIFICATE MODAL TWEAKS */
+/*============================================================================================*/
+.cert-card {
+  cursor: pointer; /* This will make the whole card look clickable */
+}
+
+.cert-view-btn {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: auto; /* Pushes the button to the bottom of the card */
+}
+
+/* Specific styling for the certificate modal image so it doesn't get cropped */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content.cert-modal-content {
+  position: relative;
+  max-width: 850px; /* Limits the width of the popup box */
+  width: 95%; /* Ensures it doesn't touch the screen edges on mobile */
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center; /* Centers the text and image */
+  margin: 0 auto; /* Forces the box to center itself */
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.cert-modal-img {
+  width: 100%;
+  max-height: 60vh; /* Prevents the image from being taller than the screen */
+  object-fit: contain; /* Ensures the whole certificate is visible without cropping */
+  background-color: #fff; /* White background, can be deleted if not needed */
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: block; /* Removes weird spacing at the bottom of images */
+}
+
+/* Optional: Make the modal body look a bit cleaner for the cert. Might delete this later */
+.cert-modal-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
 /*============================================================================================*/
 /* 9. CONTACT SECTION */
 /*============================================================================================*/
@@ -676,7 +748,7 @@ textarea::placeholder {
   background-color: #d91414;
 }
 
-/* Responsive */
+/* To make sure the form is responsive */
 @media (max-width: 992px) {
   .contact-container {
     flex-direction: column;

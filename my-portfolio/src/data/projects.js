@@ -28,7 +28,6 @@ export const projects = [
     alt: 'Python Mini Toolkit preview',
     tags: ['python'],
     link: 'https://github.com/Karah-Fisher/My-First-Coding-Project.git',
-    // special CSS class for cards whose image has whitespace (matches your old .card-image--python)
     imageClass: 'card-image--python',
   },
   {
