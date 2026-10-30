@@ -71,6 +71,9 @@ const closeCertModal = () => {
       <div class="section-header">
         <p class="eyebrow">Tech Stack</p>
         <h2 class="section-title">Specialized Skillset</h2>
+        <p style="color: rgb(221, 227, 239); max-width: 600px; margin: 20px auto">
+          I have experience with a variety of technologies and frameworks, and I'm always eager to
+          learn more. Here are some of the tools I use to build modern web applications.</p>
       </div>
 
       <div class="skills-grid-layout">
@@ -218,8 +221,8 @@ const closeCertModal = () => {
               </div>
               <div>
                 <p class="contact-label">EMAIL ME</p>
-                <a href="mailto:hello@karahfisher.dev" class="contact-value"
-                  >hello@karahfisher.dev</a
+                <a href="mailto:kfisher2505@gmail.com" class="contact-value"
+                  >kfisher2505@gmail.com</a
                 >
               </div>
             </div>
