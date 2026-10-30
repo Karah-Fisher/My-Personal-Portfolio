@@ -19,8 +19,15 @@ defineProps({
         <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
       </div>
       <div class="card-footer">
-        <a :href="project.link" target="_blank" rel="noopener" class="btn-primary">
-          Check out this project
+        <a
+          v-for="link in project.links"
+          :key="link.url"
+          :href="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          {{ link.label }}
         </a>
       </div>
     </div>

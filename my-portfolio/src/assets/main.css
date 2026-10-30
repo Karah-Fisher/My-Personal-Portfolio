@@ -28,7 +28,7 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: var(--text-main);
-  background-color: var(--bg-dark);
+  background: linear-gradient(180deg, #0d181f 0%, var(--bg-dark) 100%);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -66,7 +66,7 @@ nav .nav-brand {
   letter-spacing: 0.5px;
 }
 
-/* Small red square next to name */
+/* For the small red star next to my name */
 nav .nav-brand::after {
   content: '✦';
   color: var(--accent);
@@ -193,19 +193,15 @@ nav ul li a.active::after {
 /* 4. HERO SECTION */
 /*============================================================================================*/
 .hero-container {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 20px;
+  padding: 100px;
   display: flex;
   gap: 60px;
   justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient(rgba(10, 10, 12, 0.55), rgba(10, 10, 12, 0.75)),
-    url('/Hero%20background.png');
+  background-image:
+    linear-gradient(rgba(10, 10, 12, 0.55), rgba(10, 10, 12, 0.75)), url('/Hero%20background.png');
   background-size: cover;
   background-position: center;
-  border-radius: 16px;
-  border: 1px solid var(--border);
 }
 
 .hero-content {
@@ -242,7 +238,6 @@ nav ul li a.active::after {
   gap: 16px;
   flex-wrap: wrap;
 }
-
 
 /*============================================================================================*/
 /* 5. ABOUT SECTION */
@@ -447,6 +442,7 @@ nav ul li a.active::after {
   margin-bottom: 20px;
 }
 
+/* Tags inside the project card, might add them again */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -482,6 +478,23 @@ nav ul li a.active::after {
 
 .btn-primary:hover {
   text-decoration: underline;
+}
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/*============================================================================================*/
+/* PROJECT MODAL */
+/*============================================================================================*/
+/* Modal Action Buttons */
+.modal-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 /*============================================================================================*/
@@ -773,7 +786,7 @@ textarea::placeholder {
 .footer {
   width: 100%;
   padding: 30px 20px;
-  background-color: var(--bg-dark);
+  background-color: transparent;
   border-top: 1px solid var(--border);
   text-align: center;
   color: var(--text-muted);
